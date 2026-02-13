@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Pilah.in</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <i> <img src="/assets/images/logo.png" style="height: 35px;"></i>
+                    </div>
+                    <div>
+                        <span class="sidebar-logo-text">Pilah.in</span>
+                        <span class="sidebar-logo-sub">Dashboard</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Menu Utama</div>
+                    <a href="dashboard.html" class="nav-item active" data-page="dashboard">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="events.html" class="nav-item" data-page="events">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Event</span>
+                        <span class="badge">5</span>
+                    </a>
+                    <a href="profile.html" class="nav-item" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profil</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Komunitas</div>
+                    <a href="leaderboard.html" class="nav-item" data-page="leaderboard">
+                        <i class="fas fa-trophy"></i>
+                        <span>Leaderboard</span>
+                    </a>
+                    <a href="donations.html" class="nav-item" data-page="donations">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>Donasi</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Rewards</div>
+                    <a href="tukar-poin.html" class="nav-item" data-page="tukar-poin">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Tukar Poin</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-card" onclick="window.location.href='profile.html'">
+                    <div class="user-avatar" id="userAvatar">G</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">Guest</div>
+                        <div class="user-tier">
+                            <i class="fas fa-star"></i>
+                            <span>Level Gold</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="navbar-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+                
+                <div class="navbar-right">
+                    <button class="nav-icon-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="nav-icon-btn" id="notificationBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-count" id="notificationCount">3</span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="nav-icon-btn" id="logoutBtn" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Tier/Reward Card -->
+                <div class="tier-card">
+                    <div class="tier-header">
+                        <div class="tier-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>Level Gold</span>
+                        </div>
+                        <div style="opacity: 0.8; font-size: 0.85rem;">
+                            <i class="fas fa-coins"></i>
+                            <span id="totalPoints">2,450 Poin</span>
+                        </div>
+                    </div>
+                    <div class="tier-info">
+                        <h3>Halo, Guest</h3>
+                        <p>Kamu hanya 550 poin lagi menuju Level Platinum!</p>
+                    </div>
+                    <div class="tier-progress">
+                        <div class="progress-label">
+                            <span>Progress ke Platinum</span>
+                            <span>81%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 81%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card points">
+                        <div class="stat-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-label">Total Poin</div>
+                        <div class="stat-value">2,450</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+150 this week</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card events">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-label">Event Aktif</div>
+                        <div class="stat-value">5</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+2 this month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card donations">
+                        <div class="stat-icon">
+                            <i class="fas fa-donate"></i>
+                        </div>
+                        <div class="stat-label">Total Donasi</div>
+                        <div class="stat-value">Rp 750K</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+Rp 250K</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card activities">
+                        <div class="stat-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="stat-label">Total Aktivitas</div>
+                        <div class="stat-value">127</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+23 this month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Aktivitas Mingguan</h3>
+                            <div class="chart-actions">
+                                <button class="chart-btn active">Minggu</button>
+                                <button class="chart-btn">Bulan</button>
+                                <button class="chart-btn">Tahun</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="activityChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Kategori Sampah</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity & Notifications -->
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <h3 class="activity-title">Aktivitas Terbaru</h3>
+                            <a href="profile.html" class="view-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon green">
+                                    <i class="fas fa-recycle"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">Menyerahkan 5kg sampah plastik</div>
+                                    <div class="activity-time">2 jam yang lalu</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon amber">
+                                    <i class="fas fa-gift"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">Menukar 100 poin dengan voucher</div>
+                                    <div class="activity-time">Kemarin</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon blue">
+                                    <i class="fas fa-hands-helping"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">Mengikuti event "Bersih Pantai"</div>
+                                    <div class="activity-time">3 hari yang lalu</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon green">
+                                    <i class="fas fa-qrcode"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">Scan QR Code rumah tangga</div>
+                                    <div class="activity-time">5 hari yang lalu</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <h3 class="activity-title">Notifikasi</h3>
+                            <a href="#" class="view-all">Tandai semua dibaca</a>
+                        </div>
+                        <div class="notification-list">
+                            <div class="notification-item unread">
+                                <div class="notification-dot"></div>
+                                <div class="notification-content">
+                                    <div class="notification-text"><strong>Event Baru!</strong> Bersih Pantai Jakarta Utara akan dimulai minggu depan.</div>
+                                    <div class="notification-time">1 jam yang lalu</div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread">
+                                <div class="notification-dot"></div>
+                                <div class="notification-content">
+                                    <div class="notification-text"><strong>Selamat!</strong> Anda naik ke Level Gold.</div>
+                                    <div class="notification-time">Kemarin</div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread">
+                                <div class="notification-dot"></div>
+                                <div class="notification-content">
+                                    <div class="notification-text"><strong>Donasi Diterima!</strong> Rp 50.000 untuk campaign donate berhasil.</div>
+                                    <div class="notification-time">2 hari yang lalu</div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-content">
+                                    <div class="notification-text">Invoice penukaran poin Anda sudah dikonfirmasi.</div>
+                                    <div class="notification-time">1 minggu yang lalu</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for Event Registration -->
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Daftar Event</h3>
+                <button class="modal-close" onclick="closeModal('eventModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalEventTitle" style="font-weight: 600; margin-bottom: 8px;"></p>
+                <p style="color: var(--neutral-warm); font-size: 0.9rem; margin-bottom: 16px;">Apakah Anda yakin ingin mendaftar event ini?</p>
+                <div style="background: rgba(26,61,46,0.05); padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span style="color: var(--neutral-warm);">Kuota tersedia:</span>
+                        <span style="font-weight: 600;" id="modalQuota">25</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('eventModal')">Batal</button>
+                <button class="btn btn-primary" onclick="confirmEventRegistration()">Daftar Sekarang</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

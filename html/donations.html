@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donasi - Pilah.in</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div>
+                        <span class="sidebar-logo-text">Pilah.in</span>
+                        <span class="sidebar-logo-sub">Dashboard</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Menu Utama</div>
+                    <a href="dashboard.html" class="nav-item" data-page="dashboard">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="events.html" class="nav-item" data-page="events">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Event</span>
+                        <span class="badge">5</span>
+                    </a>
+                    <a href="profile.html" class="nav-item" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profil</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Komunitas</div>
+                    <a href="leaderboard.html" class="nav-item" data-page="leaderboard">
+                        <i class="fas fa-trophy"></i>
+                        <span>Leaderboard</span>
+                    </a>
+                    <a href="donations.html" class="nav-item active" data-page="donations">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>Donasi</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Rewards</div>
+                    <a href="tukar-poin.html" class="nav-item" data-page="tukar-poin">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Tukar Poin</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-card" onclick="window.location.href='profile.html'">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name">Ahmad Fauzi</div>
+                        <div class="user-tier">
+                            <i class="fas fa-star"></i>
+                            <span>Level Gold</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="navbar-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">Donasi</h1>
+                </div>
+                
+                <div class="navbar-right">
+                    <button class="nav-icon-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="nav-icon-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-count">3</span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Donations Content -->
+            <div class="dashboard-content">
+                <!-- Filter -->
+                <div class="leaderboard-header">
+                    <div class="leaderboard-filters">
+                        <button class="filter-btn active">Semua</button>
+                        <button class="filter-btn">Uang</button>
+                        <button class="filter-btn">Sandang</button>
+                        <button class="filter-btn">Pangan</button>
+                        <button class="filter-btn">Bencana</button>
+                    </div>
+                </div>
+                
+                <!-- Donations Grid -->
+                <div class="donations-grid">
+                    <!-- Donation Card 1 -->
+                    <div class="donation-card">
+                        <div class="donation-image" style="background: linear-gradient(135deg, #6b8e9f 0%, #4a6d7c 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-hands-helping" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="donation-content">
+                            <span class="donation-category">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                Sandang
+                            </span>
+                            <h3 class="donation-title">Bantu Korban Banjir Jakarta</h3>
+                            <p class="donation-description">Donasikan pakaian layak pakai untuk korban banjir di wilayah Jakarta dan sekitarnya.</p>
+                            <div class="donation-progress">
+                                <div class="progress-info">
+                                    <span class="raised">Rp 12.500.000</span>
+                                    <span class="target">Target: Rp 25.000.000</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                            <div class="donation-footer">
+                                <div class="donation-days">
+                                    <i class="fas fa-clock"></i>
+                                    <span>15 hari lagi</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="openDonationModal(1, 'Bantu Korban Banjir Jakarta', 25000000, 12500000)">
+                                    Donasi Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Donation Card 2 -->
+                    <div class="donation-card">
+                        <div class="donation-image" style="background: linear-gradient(135deg, #1a3d2e 0%, #2d5a45 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-utensils" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="donation-content">
+                            <span class="donation-category">
+                                <i class="fas fa-utensils"></i>
+                                Pangan
+                            </span>
+                            <h3 class="donation-title">Paket Makanan untuk Panti</h3>
+                            <p class="donation-description">Bantu kami menyediakan paket makanan bergizi untuk anak-anak di panti asuhan.</p>
+                            <div class="donation-progress">
+                                <div class="progress-info">
+                                    <span class="raised">Rp 8.200.000</span>
+                                    <span class="target">Target: Rp 10.000.000</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 82%;"></div>
+                                </div>
+                            </div>
+                            <div class="donation-footer">
+                                <div class="donation-days">
+                                    <i class="fas fa-clock"></i>
+                                    <span>7 hari lagi</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="openDonationModal(2, 'Paket Makanan untuk Panti', 10000000, 8200000)">
+                                    Donasi Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Donation Card 3 -->
+                    <div class="donation-card">
+                        <div class="donation-image" style="background: linear-gradient(135deg, #d4a574 0%, #e6b887 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-home" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="donation-content">
+                            <span class="donation-category">
+                                <i class="fas fa-home"></i>
+                                Papan
+                            </span>
+                            <h3 class="donation-title">Renovasi Rumah Tidak Layak Huni</h3>
+                            <p class="donation-description">Bantu renovasi rumah tidak layak huni untuk keluarga kurang mampu di Jawa Barat.</p>
+                            <div class="donation-progress">
+                                <div class="progress-info">
+                                    <span class="raised">Rp 45.000.000</span>
+                                    <span class="target">Target: Rp 100.000.000</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div class="donation-footer">
+                                <div class="donation-days">
+                                    <i class="fas fa-clock"></i>
+                                    <span>30 hari lagi</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="openDonationModal(3, 'Renovasi Rumah Tidak Layak Huni', 100000000, 45000000)">
+                                    Donasi Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Donation Card 4 -->
+                    <div class="donation-card">
+                        <div class="donation-image" style="background: linear-gradient(135deg, #c45c47 0%, #a84838 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-trash" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="donation-content">
+                            <span class="donation-category">
+                                <i class="fas fa-trash"></i>
+                                Sampah
+                            </span>
+                            <h3 class="donation-title">Pembersihan Sampah Lumpur</h3>
+                            <p class="donation-description">Dukungan untuk pembersihan sampah lumpur pasca banjir di kawasan permukiman.</p>
+                            <div class="donation-progress">
+                                <div class="progress-info">
+                                    <span class="raised">Rp 3.500.000</span>
+                                    <span class="target">Target: Rp 5.000.000</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="donation-footer">
+                                <div class="donation-days">
+                                    <i class="fas fa-clock"></i>
+                                    <span>3 hari lagi</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="openDonationModal(4, 'Pembersihan Sampah Lumpur', 5000000, 3500000)">
+                                    Donasi Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Donation Card 5 -->
+                    <div class="donation-card">
+                        <div class="donation-image" style="background: linear-gradient(135deg, #8b7355 0%, #6b5344 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-tshirt" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="donation-content">
+                            <span class="donation-category">
+                                <i class="fas fa-tshirt"></i>
+                                Sandang
+                            </span>
+                            <h3 class="donation-title">Pakaian Anak untuk Pedesaan</h3>
+                            <p class="donation-description">Donasi pakaian anak layak pakai untuk anak-anak di daerah pedesaan NTT.</p>
+                            <div class="donation-progress">
+                                <div class="progress-info">
+                                    <span class="raised">Rp 2.800.000</span>
+                                    <span class="target">Target: Rp 7.500.000</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 37%;"></div>
+                                </div>
+                            </div>
+                            <div class="donation-footer">
+                                <div class="donation-days">
+                                    <i class="fas fa-clock"></i>
+                                    <span>20 hari lagi</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="openDonationModal(5, 'Pakaian Anak untuk Pedesaan', 7500000, 2800000)">
+                                    Donasi Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Donation Card 6 -->
+                    <div class="donation-card">
+                        <div class="donation-image" style="background: linear-gradient(135deg, #2d5a45 0%, #1a3d2e 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-tint" style="font-size: 3rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="donation-content">
+                            <span class="donation-category">
+                                <i class="fas fa-tint"></i>
+                                Bencana
+                            </span>
+                            <h3 class="donation-title">Air Bersih untuk Terdampak</h3>
+                            <p class="donation-description">Bantu menyediakan air bersih dan sanitizer untuk korban banjir bandang.</p>
+                            <div class="donation-progress">
+                                <div class="progress-info">
+                                    <span class="raised">Rp 18.900.000</span>
+                                    <span class="target">Target: Rp 20.000.000</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                            <div class="donation-footer">
+                                <div class="donation-days">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2 hari lagi</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="openDonationModal(6, 'Air Bersih untuk Terdampak', 20000000, 18900000)">
+                                    Donasi Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Donation Modal -->
+    <div class="modal-overlay" id="donationModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Donasi</h3>
+                <button class="modal-close" onclick="closeModal('donationModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="donationTitle" style="font-weight: 600; margin-bottom: 16px;"></p>
+                
+                <div style="margin-bottom: 20px;">
+                    <label class="form-label">Jumlah Donasi</label>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px;">
+                        <button class="btn btn-outline donation-amount" onclick="selectAmount(25000)">Rp 25.000</button>
+                        <button class="btn btn-outline donation-amount" onclick="selectAmount(50000)">Rp 50.000</button>
+                        <button class="btn btn-outline donation-amount" onclick="selectAmount(100000)">Rp 100.000</button>
+                    </div>
+                    <input type="number" class="form-input" id="donationAmount" placeholder="Masukkan jumlah lain">
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label class="form-label">Metode Pembayaran</label>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn btn-outline payment-method active" onclick="selectPayment('dana')">
+                            <i class="fab fa-whatsapp"></i> DANA
+                        </button>
+                        <button class="btn btn-outline payment-method" onclick="selectPayment('gopay')">
+                            <i class="fas fa-wallet"></i> GoPay
+                        </button>
+                        <button class="btn btn-outline payment-method" onclick="selectPayment('ovo')">
+                            <i class="fas fa-mobile-alt"></i> OVO
+                        </button>
+                        <button class="btn btn-outline payment-method" onclick="selectPayment('bank')">
+                            <i class="fas fa-university"></i> Transfer Bank
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('donationModal')">Batal</button>
+                <button class="btn btn-primary" onclick="confirmDonation()">Donasi Sekarang</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script>
+        let selectedAmount = 0;
+        let selectedPayment = 'dana';
+        
+        function openDonationModal(id, title, target, raised) {
+            document.getElementById('donationTitle').textContent = title;
+            openModal('donationModal');
+        }
+        
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            document.getElementById('donationAmount').value = amount;
+            document.querySelectorAll('.donation-amount').forEach(btn => {
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-outline');
+            });
+            event.target.classList.remove('btn-outline');
+            event.target.classList.add('btn-primary');
+        }
+        
+        function selectPayment(method) {
+            selectedPayment = method;
+            document.querySelectorAll('.payment-method').forEach(btn => {
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-outline');
+            });
+            event.target.classList.remove('btn-outline');
+            event.target.classList.add('btn-primary');
+        }
+        
+        function confirmDonation() {
+            const amount = document.getElementById('donationAmount').value;
+            if (!amount || amount < 10000) {
+                window.showToast('Minimal donasi adalah Rp 10.000', 'error');
+                return;
+            }
+            window.showToast('Donasi berhasil! Terima kasih atas kebaikannya.', 'success');
+            closeModal('donationModal');
+        }
+    </script>
+</body>
+</html>

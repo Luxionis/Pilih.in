@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event - Pilah.in</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div>
+                        <span class="sidebar-logo-text">Pilah.in</span>
+                        <span class="sidebar-logo-sub">Dashboard</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Menu Utama</div>
+                    <a href="dashboard.html" class="nav-item" data-page="dashboard">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="events.html" class="nav-item active" data-page="events">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Event</span>
+                        <span class="badge">5</span>
+                    </a>
+                    <a href="profile.html" class="nav-item" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profil</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Komunitas</div>
+                    <a href="leaderboard.html" class="nav-item" data-page="leaderboard">
+                        <i class="fas fa-trophy"></i>
+                        <span>Leaderboard</span>
+                    </a>
+                    <a href="donations.html" class="nav-item" data-page="donations">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>Donasi</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Rewards</div>
+                    <a href="tukar-poin.html" class="nav-item" data-page="tukar-poin">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Tukar Poin</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-card" onclick="window.location.href='profile.html'">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name">Ahmad Fauzi</div>
+                        <div class="user-tier">
+                            <i class="fas fa-star"></i>
+                            <span>Level Gold</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="navbar-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">Event</h1>
+                </div>
+                
+                <div class="navbar-right">
+                    <button class="nav-icon-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="nav-icon-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-count">3</span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Events Content -->
+            <div class="dashboard-content">
+                <!-- Filter -->
+                <div class="leaderboard-header">
+                    <div class="leaderboard-filters">
+                        <button class="filter-btn active">Semua</button>
+                        <button class="filter-btn">Volunteer</button>
+                        <button class="filter-btn">Bersih Pantai</button>
+                        <button class="filter-btn">Edukasi</button>
+                        <button class="filter-btn">Workshop</button>
+                    </div>
+                </div>
+                
+                <!-- Events Grid -->
+                <div class="events-grid">
+                    <!-- Event Card 1 -->
+                    <div class="event-card">
+                        <div class="event-image" style="background: linear-gradient(135deg, #1a3d2e 0%, #2d5a45 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-hands-helping" style="font-size: 4rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-category">
+                                <i class="fas fa-hands-helping"></i>
+                                Volunteer
+                            </span>
+                            <h3 class="event-title">Bersih Pantai Jakarta Utara</h3>
+                            <p class="event-description">Bergabunglah dengan komunitas untuk membersihkan pantai Jakarta Utara dari sampah plastik yang mencemari ekosistem laut.</p>
+                            <div class="event-meta">
+                                <div class="event-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>15 Feb 2025</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>07:00 - 12:00</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Pantai Ancol</span>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <div class="event-quota">
+                                    Kuota: <span>25</span> / 50
+                                </div>
+                                <span class="event-status open">Buka</span>
+                            </div>
+                            <button class="btn btn-primary btn-full" style="margin-top: 16px;" onclick="registerEvent(1, 'Bersih Pantai Jakarta Utara', 25)">
+                                <i class="fas fa-user-plus"></i>
+                                Daftar Sekarang
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event Card 2 -->
+                    <div class="event-card">
+                        <div class="event-image" style="background: linear-gradient(135deg, #d4a574 0%, #e6b887 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-graduation-cap" style="font-size: 4rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-category">
+                                <i class="fas fa-graduation-cap"></i>
+                                Edukasi
+                            </span>
+                            <h3 class="event-title">Workshop Pemilahan Sampah</h3>
+                            <p class="event-description">Pelajari teknik pemilahan sampah yang benar dari ahlinya. Dapatkan sertifikat dan poin bonus!</p>
+                            <div class="event-meta">
+                                <div class="event-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>20 Feb 2025</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>09:00 - 12:00</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Meeting Room A</span>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <div class="event-quota">
+                                    Kuota: <span>15</span> / 30
+                                </div>
+                                <span class="event-status open">Buka</span>
+                            </div>
+                            <button class="btn btn-primary btn-full" style="margin-top: 16px;" onclick="registerEvent(2, 'Workshop Pemilahan Sampah', 15)">
+                                <i class="fas fa-user-plus"></i>
+                                Daftar Sekarang
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event Card 3 -->
+                    <div class="event-card">
+                        <div class="event-image" style="background: linear-gradient(135deg, #2d5a45 0%, #1a3d2e 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-recycle" style="font-size: 4rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-category">
+                                <i class="fas fa-recycle"></i>
+                                Workshop
+                            </span>
+                            <h3 class="event-title">Kreasi Daun Kering</h3>
+                            <p class="event-description">Ubah daun kering menjadi karya seni indah. Workshop kreatif yang mendukung kelestarian lingkungan.</p>
+                            <div class="event-meta">
+                                <div class="event-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>25 Feb 2025</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>10:00 - 14:00</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Taman Menteng</span>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <div class="event-quota">
+                                    Kuota: <span>20</span> / 20
+                                </div>
+                                <span class="event-status full">Penuh</span>
+                            </div>
+                            <button class="btn btn-outline btn-full" style="margin-top: 16px;" disabled>
+                                <i class="fas fa-user-plus"></i>
+                                Kuota Penuh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event Card 4 -->
+                    <div class="event-card">
+                        <div class="event-image" style="background: linear-gradient(135deg, #8b7355 0%, #6b5344 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-tree" style="font-size: 4rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-category">
+                                <i class="fas fa-tree"></i>
+                                Volunteer
+                            </span>
+                            <h3 class="event-title">Penanaman Pohon Baru</h3>
+                            <p class="event-description">Bergabunglah dalam gerakan penghijauan dengan menanam pohon produktif di kawasan hutan kota.</p>
+                            <div class="event-meta">
+                                <div class="event-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>1 Mar 2025</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>06:00 - 11:00</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Hutan Kota BSD</span>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <div class="event-quota">
+                                    Kuota: <span>40</span> / 100
+                                </div>
+                                <span class="event-status open">Buka</span>
+                            </div>
+                            <button class="btn btn-primary btn-full" style="margin-top: 16px;" onclick="registerEvent(4, 'Penanaman Pohon Baru', 40)">
+                                <i class="fas fa-user-plus"></i>
+                                Daftar Sekarang
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event Card 5 -->
+                    <div class="event-card">
+                        <div class="event-image" style="background: linear-gradient(135deg, #6b8e9f 0%, #4a6d7c 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-school" style="font-size: 4rem; color: rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-category">
+                                <i class="fas fa-school"></i>
+                                Edukasi
+                            </span>
+                            <h3 class="event-title">Edukasi Lingkungan ke Sekolah</h3>
+                            <p class="event-description">Sosialisasikan pentingnya pengelolaan sampah sejak dini ke siswa-siswi sekolah dasar.</p>
+                            <div class="event-meta">
+                                <div class="event-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>5 Mar 2025</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>08:00 - 11:00</span>
+                                </div>
+                                <div class="event-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>SDN Menteng 1</span>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <div class="event-quota">
+                                    Kuota: <span>10</span> / 15
+                                </div>
+                                <span class="event-status open">Buka</span>
+                            </div>
+                            <button class="btn btn-primary btn-full" style="margin-top: 16px;" onclick="registerEvent(5, 'Edukasi Lingkungan ke Sekolah', 10)">
+                                <i class="fas fa-user-plus"></i>
+                                Daftar Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for Event Registration -->
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Daftar Event</h3>
+                <button class="modal-close" onclick="closeModal('eventModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalEventTitle" style="font-weight: 600; margin-bottom: 8px;"></p>
+                <p style="color: var(--neutral-warm); font-size: 0.9rem; margin-bottom: 16px;">Apakah Anda yakin ingin mendaftar event ini?</p>
+                <div style="background: rgba(26,61,46,0.05); padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span style="color: var(--neutral-warm);">Kuota tersedia:</span>
+                        <span style="font-weight: 600;" id="modalQuota">25</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('eventModal')">Batal</button>
+                <button class="btn btn-primary" onclick="confirmEventRegistration()">Daftar Sekarang</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tukar Poin - Pilah.in</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div>
+                        <span class="sidebar-logo-text">Pilah.in</span>
+                        <span class="sidebar-logo-sub">Dashboard</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Menu Utama</div>
+                    <a href="dashboard.html" class="nav-item" data-page="dashboard">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="events.html" class="nav-item" data-page="events">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Event</span>
+                        <span class="badge">5</span>
+                    </a>
+                    <a href="profile.html" class="nav-item" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profil</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Komunitas</div>
+                    <a href="leaderboard.html" class="nav-item" data-page="leaderboard">
+                        <i class="fas fa-trophy"></i>
+                        <span>Leaderboard</span>
+                    </a>
+                    <a href="donations.html" class="nav-item" data-page="donations">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>Donasi</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Rewards</div>
+                    <a href="tukar-poin.html" class="nav-item active" data-page="tukar-poin">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Tukar Poin</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-card" onclick="window.location.href='profile.html'">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name">Ahmad Fauzi</div>
+                        <div class="user-tier">
+                            <i class="fas fa-star"></i>
+                            <span>Level Gold</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="navbar-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">Tukar Poin</h1>
+                </div>
+                
+                <div class="navbar-right">
+                    <button class="nav-icon-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="nav-icon-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-count">3</span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Tukar Poin Content -->
+            <div class="dashboard-content">
+                <div class="exchange-layout">
+                    <!-- Exchange Content -->
+                    <div class="exchange-content">
+                        <!-- Tier System Info -->
+                        <div class="exchange-card">
+                            <div class="exchange-header">
+                                <h3 class="exchange-title">Sistem Tier & Diskon</h3>
+                                <p class="exchange-subtitle">Tukar poin dengan potongan iuran sampah otomatis</p>
+                            </div>
+                            
+                            <div class="tier-system">
+                                <div class="tier-option">
+                                    <div class="tier-points">30</div>
+                                    <div class="tier-discount">10%</div>
+                                    <div class="tier-label">Potongan Bulanan</div>
+                                </div>
+                                <div class="tier-option selected">
+                                    <div class="tier-points">60</div>
+                                    <div class="tier-discount">15%</div>
+                                    <div class="tier-label">Potongan Bulanan</div>
+                                </div>
+                                <div class="tier-option">
+                                    <div class="tier-points">90</div>
+                                    <div class="tier-discount">30%</div>
+                                    <div class="tier-label">Potongan Bulanan</div>
+                                </div>
+                            </div>
+                            
+                            <div style="background: rgba(26,61,46,0.05); padding: 16px; border-radius: 10px; margin-top: 16px;">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                    <i class="fas fa-info-circle" style="color: var(--primary-green); font-size: 1.25rem;"></i>
+                                    <span style="font-weight: 600; color: var(--primary-green);">Catatan:</span>
+                                </div>
+                                <ul style="list-style: none; font-size: 0.9rem; color: var(--neutral-warm);">
+                                    <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i> Poin akan reset setiap awal bulan</li>
+                                    <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i> Diskon berlaku untuk 1 bulan berikutnya</li>
+                                    <li><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i> Minimal penukaran 30 poin</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Vouchers -->
+                        <div class="exchange-card">
+                            <div class="exchange-header">
+                                <h3 class="exchange-title">Voucher Rewards</h3>
+                                <p class="exchange-subtitle">Tukar poin dengan voucher menarik</p>
+                            </div>
+                            
+                            <div class="voucher-grid">
+                                <!-- Voucher 1 -->
+                                <div class="voucher-card selected" onclick="selectVoucher(1, 'Voucher Belanja supermarket', 50)">
+                                    <div class="voucher-header">
+                                        <div class="voucher-icon">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </div>
+                                        <div class="voucher-points">50 Poin</div>
+                                    </div>
+                                    <h4 class="voucher-title">Voucher Belanja Supermarket</h4>
+                                    <p class="voucher-description">Voucher Rp 25.000 untuk belanja di supermarket terdekat</p>
+                                    <div class="voucher-valid">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Berlaku 30 hari</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Voucher 2 -->
+                                <div class="voucher-card" onclick="selectVoucher(2, 'Voucher Transport', 75)">
+                                    <div class="voucher-header">
+                                        <div class="voucher-icon">
+                                            <i class="fas fa-motorcycle"></i>
+                                        </div>
+                                        <div class="voucher-points">75 Poin</div>
+                                    </div>
+                                    <h4 class="voucher-title">Voucher Transport Online</h4>
+                                    <p class="voucher-description">Voucher Rp 35.000 untuk Gojek/Grab</p>
+                                    <div class="voucher-valid">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Berlaku 30 hari</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Voucher 3 -->
+                                <div class="voucher-card" onclick="selectVoucher(3, 'Voucher Makanan', 40)">
+                                    <div class="voucher-header">
+                                        <div class="voucher-icon">
+                                            <i class="fas fa-utensils"></i>
+                                        </div>
+                                        <div class="voucher-points">40 Poin</div>
+                                    </div>
+                                    <h4 class="voucher-title">Voucher Makanan</h4>
+                                    <p class="voucher-description">Voucher Rp 20.000 untuk pesan makanan online</p>
+                                    <div class="voucher-valid">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Berlaku 30 hari</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Voucher 4 -->
+                                <div class="voucher-card" onclick="selectVoucher(4, 'Voucher Listrik', 100)">
+                                    <div class="voucher-header">
+                                        <div class="voucher-icon">
+                                            <i class="fas fa-bolt"></i>
+                                        </div>
+                                        <div class="voucher-points">100 Poin</div>
+                                    </div>
+                                    <h4 class="voucher-title">Voucher Listrik PLN</h4>
+                                    <p class="voucher-description">Voucher Rp 50.000 untuk pembayaran listrik</p>
+                                    <div class="voucher-valid">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Berlaku 60 hari</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Voucher 5 -->
+                                <div class="voucher-card" onclick="selectVoucher(5, 'Voucher Pulsa', 25)">
+                                    <div class="voucher-header">
+                                        <div class="voucher-icon">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <div class="voucher-points">25 Poin</div>
+                                    </div>
+                                    <h4 class="voucher-title">Voucher Pulsa</h4>
+                                    <p class="voucher-description">Voucher Rp 15.000 untuk pembelian pulsa</p>
+                                    <div class="voucher-valid">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Berlaku 30 hari</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Voucher 6 -->
+                                <div class="voucher-card" onclick="selectVoucher(6, 'Produk Eco', 150)">
+                                    <div class="voucher-header">
+                                        <div class="voucher-icon">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+                                        <div class="voucher-points">150 Poin</div>
+                                    </div>
+                                    <h4 class="voucher-title">Produk Ramah Lingkungan</h4>
+                                    <p class="voucher-description">Tas kanvas/Tumbler eco-friendly Pilah.in</p>
+                                    <div class="voucher-valid">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Berlaku 90 hari</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Exchange History -->
+                        <div class="exchange-card">
+                            <div class="exchange-header">
+                                <h3 class="exchange-title">Riwayat Penukaran</h3>
+                                <a href="#" class="view-all">Lihat Semua</a>
+                            </div>
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Voucher</th>
+                                        <th>Poin Digunakan</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>14 Jan 2025</td>
+                                        <td>Voucher Belanja Supermarket</td>
+                                        <td>-50</td>
+                                        <td><span class="history-type positive">Berhasil</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>05 Jan 2025</td>
+                                        <td>Voucher Pulsa</td>
+                                        <td>-25</td>
+                                        <td><span class="history-type positive">Berhasil</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>28 Des 2024</td>
+                                        <td>Potongan Iuran Sampah (15%)</td>
+                                        <td>-60</td>
+                                        <td><span class="history-type positive">Berhasil</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Exchange Summary -->
+                    <div class="exchange-summary">
+                        <h3 class="summary-title">Ringkasan Penukaran</h3>
+                        
+                        <div class="tier-card" style="background: linear-gradient(135deg, var(--primary-green), #2d5a45); margin-bottom: 20px;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 2.5rem; font-weight: 700;">2,450</div>
+                                <div style="font-size: 0.9rem; opacity: 0.9;">Poin Tersedia</div>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <span class="summary-label">Tier Saat Ini</span>
+                            <span class="summary-value">Gold</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Diskon Tersedia</span>
+                            <span class="summary-value">15%</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Voucher Dipilih</span>
+                            <span class="summary-value" id="selectedVoucherName">Voucher Belanja Supermarket</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Poin Needed</span>
+                            <span class="summary-value" id="selectedVoucherPoints">50 Poin</span>
+                        </div>
+                        
+                        <div class="summary-total">
+                            <div class="summary-item" style="border: none; padding-bottom: 0;">
+                                <span class="summary-label">Sisa Poin</span>
+                                <span class="summary-value" id="remainingPoints">2,400 Poin</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-full" style="margin-top: 20px;" onclick="confirmExchange()">
+                            <i class="fas fa-exchange-alt"></i>
+                            Tukar Sekarang
+                        </button>
+                        
+                        <div style="text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--neutral-warm);">
+                            <i class="fas fa-shield-alt"></i>
+                            Transaksi aman & terenkripsi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script>
+        let selectedVoucherId = 1;
+        let selectedVoucherPoints = 50;
+        const totalPoints = 2450;
+        
+        function selectVoucher(id, name, points) {
+            selectedVoucherId = id;
+            selectedVoucherPoints = points;
+            
+            // Update UI
+            document.getElementById('selectedVoucherName').textContent = name;
+            document.getElementById('selectedVoucherPoints').textContent = points + ' Poin';
+            document.getElementById('remainingPoints').textContent = (totalPoints - points) + ' Poin';
+            
+            // Update selected state
+            document.querySelectorAll('.voucher-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        }
+        
+        function confirmExchange() {
+            if (selectedVoucherPoints > totalPoints) {
+                window.showToast('Poin tidak mencukupi!', 'error');
+                return;
+            }
+            
+            window.showToast('Penukaran berhasil! Voucher telah dikirim ke email Anda.', 'success');
+        }
+        
+        // Initialize with first voucher selected
+        document.addEventListener('DOMContentLoaded', function() {
+            selectVoucher(1, 'Voucher Belanja Supermarket', 50);
+        });
+    </script>
+</body>
+</html>

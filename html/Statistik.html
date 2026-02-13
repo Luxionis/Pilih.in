@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Statistik Dampak Lingkungan - Pilah.in">
+    <title>Statistik - Pilah.in</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a3d2e 0%, #2d5a45 100%);
+            padding: 120px 0 60px;
+            color: white;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Stats Cards */
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.75rem;
+        }
+
+        .stat-icon.green {
+            background: rgba(45, 90, 69, 0.1);
+            color: #2d5a45;
+        }
+
+        .stat-icon.amber {
+            background: rgba(212, 165, 116, 0.15);
+            color: #d4a574;
+        }
+
+        .stat-icon.blue {
+            background: rgba(107, 142, 159, 0.15);
+            color: #6b8e9f;
+        }
+
+        .stat-icon.orange {
+            background: rgba(196, 92, 71, 0.1);
+            color: #c45c47;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a3d2e;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #8b7355;
+        }
+
+        /* Chart Section */
+        .chart-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .chart-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a3d2e;
+        }
+
+        .chart-filters {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chart-filter {
+            padding: 8px 16px;
+            border: 2px solid #e5e5e5;
+            border-radius: 20px;
+            background: white;
+            color: #8b7355;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chart-filter:hover,
+        .chart-filter.active {
+            border-color: #1a3d2e;
+            color: #1a3d2e;
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        /* Impact Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .impact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .impact-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .impact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .impact-trend {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .impact-trend.up {
+            color: #2d5a45;
+        }
+
+        .impact-trend.down {
+            color: #c45c47;
+        }
+
+        .impact-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1a3d2e;
+            margin-bottom: 4px;
+        }
+
+        .impact-label {
+            font-size: 0.9rem;
+            color: #8b7355;
+        }
+
+        /* Help Button Styles */
+        .help-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a3d2e 0%, #2d5a45 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(26, 61, 46, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .help-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(26, 61, 46, 0.5);
+        }
+
+        .help-button i {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Help Modal Overlay */
+        .help-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .help-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .help-modal {
+            background: white;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .help-overlay.active .help-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .help-modal-header {
+            background: linear-gradient(135deg, #1a3d2e 0%, #2d5a45 100%);
+            padding: 24px;
+            border-radius: 24px 24px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .help-modal-header h3 {
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .help-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .help-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .help-modal-body {
+            padding: 24px;
+        }
+
+        .help-search {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .help-search input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border: 2px solid #e5e5e5;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .help-search input:focus {
+            outline: none;
+            border-color: #1a3d2e;
+        }
+
+        .help-search i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8b7355;
+        }
+
+        .help-section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8b7355;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .help-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 8px;
+        }
+
+        .help-option:hover {
+            background: #f5f5f5;
+        }
+
+        .help-option-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .help-option-icon.green { background: rgba(45, 90, 69, 0.1); color: #2d5a45; }
+        .help-option-icon.amber { background: rgba(212, 165, 116, 0.15); color: #d4a574; }
+        .help-option-icon.blue { background: rgba(107, 142, 159, 0.15); color: #6b8e9f; }
+
+        .help-option-info h4 {
+            font-size: 0.95rem;
+            color: #1a3d2e;
+            margin-bottom: 2px;
+        }
+
+        .help-option-info p {
+            font-size: 0.8rem;
+            color: #8b7355;
+            margin: 0;
+        }
+
+        .help-contact {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .help-contact-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a3d2e;
+            margin-bottom: 12px;
+        }
+
+        .help-contact-options {
+            display: flex;
+            gap: 12px;
+        }
+
+        .help-contact-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid #e5e5e5;
+            background: white;
+            color: #1a3d2e;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .help-contact-btn:hover {
+            border-color: #1a3d2e;
+            background: #f5f5f5;
+        }
+
+        /* Navigation Active State */
+        .nav-menu a.active {
+            color: #1a3d2e;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-overview {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="beranda.html" class="logo">
+                    <i> <img src="/assets/images/logo.png" style="height: 50px;"></i>
+                    <span>Pilah.in</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="beranda.html">Beranda</a></li>
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                    <li><a href="statistik.html">Statistik</a></li>
+                    <li><a href="login.html" class="btn-outline">Masuk</a></li>
+                    <li><a href="register.html" class="btn-primary">Daftar Gratis</a></li>
+                </ul>
+                <button class="mobile-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Statistik Dampak Lingkungan</h1>
+            <p>Melihat dampak nyata dari perjalanan pengelolaan sampah berbasis komunitas.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section style="padding: 48px 0; background: #fefefe;">
+        <div class="container">
+            <!-- Stats Overview -->
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-value">125+</div>
+                    <div class="stat-label">Pengguna Aktif</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon amber">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="stat-value">127 Ton</div>
+                    <div class="stat-label">Sampah Diolah</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="stat-value">89</div>
+                    <div class="stat-label">Pohon Ditanam</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="stat-value">5 Ton</div>
+                    <div class="stat-label">CO₂ Dikurangi</div>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <h3 class="chart-title">Tren Pengolahan Sampah</h3>
+                    <div class="chart-filters">
+                        <button class="chart-filter">Minggu</button>
+                        <button class="chart-filter active">Bulan</button>
+                        <button class="chart-filter">Tahun</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="wasteChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Impact Grid -->
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-header">
+                        <div class="impact-icon" style="background: rgba(45, 90, 69, 0.1); color: #2d5a45;">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="impact-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            12%
+                        </div>
+                    </div>
+                    <div class="impact-value">127 Ton</div>
+                    <div class="impact-label">Sampah Dialihkan dari TPA</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-header">
+                        <div class="impact-icon" style="background: rgba(107, 142, 159, 0.15); color: #6b8e9f;">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="impact-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            8%
+                        </div>
+                    </div>
+                    <div class="impact-value">5 Ton</div>
+                    <div class="impact-label">Emisi CO₂ Dikurangi</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-header">
+                        <div class="impact-icon" style="background: rgba(212, 165, 116, 0.15); color: #d4a574;">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="impact-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            15%
+                        </div>
+                    </div>
+                    <div class="impact-value">60 MWh</div>
+                    <div class="impact-label">Energi Dihemat</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-header">
+                        <div class="impact-icon" style="background: rgba(45, 90, 69, 0.1); color: #2d5a45;">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="impact-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            10%
+                        </div>
+                    </div>
+                    <div class="impact-value">120 Liter</div>
+                    <div class="impact-label">Air Dihemat</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-header">
+                        <div class="impact-icon" style="background: rgba(196, 92, 71, 0.1); color: #c45c47;">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="impact-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            22%
+                        </div>
+                    </div>
+                    <div class="impact-value">89</div>
+                    <div class="impact-label">Pohon Ditanam</div>   
+                </div>
+                <div class="impact-card">
+                    <div class="impact-header">
+                        <div class="impact-icon" style="background: rgba(107, 142, 159, 0.15); color: #6b8e9f;">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="impact-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            18%
+                        </div>
+                    </div>
+                    <div class="impact-value">78%</div>
+                    <div class="impact-label">Tingkat Daur Ulang</div>
+                </div>
+            </div>
+
+            <!-- Second Chart -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <h3 class="chart-title">Distribusi Kolektif Kategori Sampah (Ton)</h3>
+                </div>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-background">
+            <div class="gradient-orb orb-4"></div>
+            <div class="gradient-orb orb-5"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content">
+                <h2>Siap Menjadi Bagian dari Perubahan?</h2>
+                <p>Bergabunglah dengan para changemaker yang telah memulai perjalanan mereka</p>
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn-cta-primary">
+                        Daftar Sekarang - Gratis
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="tentang.html" class="btn-cta-secondary">
+                        Pelajari Lebih Lanjut
+                    </a>
+                </div>
+                <div class="cta-trust">
+                    <div class="trust-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Gratis</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Data Aman</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mobile Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="beranda.html" class="footer-logo">
+                        <i> <img src="/assets/images/logo.png" style="height: 50px;"></i>                        <span>Pilah.in</span>
+                    </a>
+                    <p class="footer-description">
+                        Platform lingkungan yang memberdayakan komunitas untuk melawan polusi plastik 
+                        melalui teknologi dan gamifikasi.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="beranda.html">Beranda</a></li>
+                        <li><a href="tentang.html">Tentang Kami</a></li>
+                        <li><a href="statistik.html">Statistik</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Komunitas</h4>
+                    <ul>
+                        <li><a href="#">Event</a></li>
+                        <li><a href="#">Leaderboard</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Perusahaan</h4>
+                    <ul>
+                        <li><a href="tentang.html">Tentang Kami</a></li>
+                        <li><a href="#">Partner</a></li>
+                        <li><a href="#">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Pilah.in. Semua hak dilindungi. Dibuat dengan <i class="fas fa-heart"></i> untuk Bumi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Help Button -->
+    <button class="help-button" onclick="toggleHelp()" aria-label="Bantuan">
+        <i class="fas fa-question"></i>
+    </button>
+
+    <!-- Help Modal Overlay -->
+    <div class="help-overlay" id="helpOverlay">
+        <div class="help-modal">
+            <div class="help-modal-header">
+                <h3><i class="fas fa-headset"></i> Pusat Bantuan</h3>
+                <button class="help-close" onclick="toggleHelp()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="help-modal-body">
+                <div class="help-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cari bantuan...">
+                </div>
+
+                <div class="help-section-title">Kategori Bantuan</div>
+                
+                <div class="help-option">
+                    <div class="help-option-icon green">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="help-option-info">
+                        <h4>Daftar & Login</h4>
+                        <p>Cara membuat akun dan masuk ke sistem</p>
+                    </div>
+                </div>
+
+                <div class="help-option">
+                    <div class="help-option-icon amber">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="help-option-info">
+                        <h4>Cara Pilah Sampah</h4>
+                        <p>Panduan pemilahan sampah yang benar</p>
+                    </div>
+                </div>
+
+                <div class="help-option">
+                    <div class="help-option-icon green">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <div class="help-option-info">
+                        <h4>QR Code Rumah Tangga</h4>
+                        <p>Cara menggunakan dan scan QR code</p>
+                    </div>
+                </div>
+
+                <div class="help-option">
+                    <div class="help-option-icon blue">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="help-option-info">
+                        <h4>Reward & Poin</h4>
+                        <p>Cara mendapatkan dan menukar poin</p>
+                    </div>
+                </div>
+
+                <div class="help-option">
+                    <div class="help-option-icon amber">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="help-option-info">
+                        <h4>Lokasi TPS/TPA</h4>
+                        <p>Cari lokasi terdekat di sekitar Anda</p>
+                    </div>
+                </div>
+
+                <div class="help-option">
+                    <div class="help-option-icon blue">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="help-option-info">
+                        <h4>Donasi</h4>
+                        <p>Cara berdonasi untuk lingkungan</p>
+                    </div>
+                </div>
+
+                <div class="help-contact">
+                    <div class="help-contact-title">Hubungi Kami Langsung</div>
+                    <div class="help-contact-options">
+                        <button class="help-contact-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </button>
+                        <button class="help-contact-btn">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Line Chart
+            const wasteCtx = document.getElementById('wasteChart').getContext('2d');
+            new Chart(wasteCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Sampah Diolah (Ton)',
+                        data: [7.2, 8.5, 9.4, 10.1, 11.2, 10.8, 11.5, 12.4, 11.7, 10.9, 11.5, 11.8],
+                        borderColor: '#1a3d2e',
+                        backgroundColor: 'rgba(26, 61, 46, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Pengguna Aktif',
+                        data: [4, 5, 6, 7, 8, 9, 11, 12, 14, 15, 11, 13],
+                        borderColor: '#d4a574',
+                        backgroundColor: 'transparent',
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Ton'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                            title: {
+                                display: true,
+                                text: 'Pengguna'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Pie Chart
+            const pieCtx = document.getElementById('pieChart').getContext('2d');
+            new Chart(pieCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Plastik', 'Kertas', 'Kaca', 'Logam', 'Organik', 'Lainnya'],
+                    datasets: [{
+                        data: [45, 25, 19, 13, 19, 6],
+                        backgroundColor: [
+                            '#1a3d2e',
+                            '#2d5a45',
+                            '#d4a574',
+                            '#6b8e9f',
+                            '#c45c47',
+                            '#8b7355'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+        });
+
+        // Chart Filter Buttons
+        document.querySelectorAll('.chart-filter').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.chart-filter').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Help Modal Functions
+        function toggleHelp() {
+            const overlay = document.getElementById('helpOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('helpOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleHelp();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('helpOverlay');
+                if (overlay.classList.contains('active')) {
+                    toggleHelp();
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

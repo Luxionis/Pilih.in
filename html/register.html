@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - Pilah.in</title>
+    <link rel="stylesheet" href="/assets/css/auth.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <!-- Left Panel - Branding -->
+        <div class="auth-brand">
+            <div class="brand-content">
+                <a href="index.html" class="brand-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Pilah.in</span>
+                </a>
+                <h1>Mulai Perjalanan Hijau Anda</h1>
+                <p>Bergabunglah dengan komunitas yang peduli lingkungan. Gratis selamanya, dampak selamanya.</p>
+                
+                <div class="registration-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Lacak dampak lingkungan real-time</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Dapatkan poin & reward menarik</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Terhubung dengan komunitas global</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Akses AI assistant 24/7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Registration Form -->
+        <div class="auth-form-wrapper">
+            <div class="auth-form">
+                <div class="form-header">
+                    <h2>Buat Akun Baru</h2>
+                    <p>Sudah punya akun? <a href="login.html" class="link-primary">Masuk di sini</a></p>
+                </div>
+
+                <!-- Progress Steps -->
+                <div class="progress-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Info Dasar</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Lokasi</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Verifikasi</div>
+                    </div>
+                </div>
+
+                <form id="registerForm" method="POST" action="api/auth/register.php">
+                    <div class="alert alert-error" id="errorAlert" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="errorMessage"></span>
+                    </div>
+
+                    <!-- Step 1: Basic Info -->
+                    <div class="form-step active" id="step1">
+                        <div class="form-group">
+                            <label for="fullname">Nama Lengkap</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input 
+                                    type="text" 
+                                    id="fullname" 
+                                    name="fullname" 
+                                    placeholder="Nama lengkap Anda"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-at"></i>
+                                <input 
+                                    type="text" 
+                                    id="username" 
+                                    name="username" 
+                                    placeholder="Username unik"
+                                    required
+                                >
+                                <span class="input-hint">Minimal 4 karakter, huruf dan angka</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope"></i>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    placeholder="nama@email.com"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock"></i>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    placeholder="Minimal 8 karakter"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar"></div>
+                                <span class="strength-text">Kekuatan password</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm_password">Konfirmasi Password</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock"></i>
+                                <input 
+                                    type="password" 
+                                    id="confirm_password" 
+                                    name="confirm_password" 
+                                    placeholder="Ketik ulang password"
+                                    required
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Location -->
+                    <div class="form-step" id="step2">
+                        <div class="form-group">
+                            <label for="province">Provinsi</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <select id="province" name="province" required>
+                                    <option value="">Pilih Provinsi</option>
+                                    <option value="bali">Bali</option>
+                                    <option value="jakarta">DKI Jakarta</option>
+                                    <option value="jawa-barat">Jawa Barat</option>
+                                    <option value="jawa-tengah">Jawa Tengah</option>
+                                    <option value="jawa-timur">Jawa Timur</option>
+                                    <!-- Add more provinces -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">Kota/Kabupaten</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-city"></i>
+                                <select id="city" name="city" required>
+                                    <option value="">Pilih Kota</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone"></i>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone" 
+                                    placeholder="08xx xxxx xxxx"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="referral">Kode Referral (Opsional)</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-gift"></i>
+                                <input 
+                                    type="text" 
+                                    id="referral" 
+                                    name="referral" 
+                                    placeholder="Masukkan kode referral"
+                                >
+                                <span class="input-hint">Dapatkan 500 poin bonus!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Verification -->
+                    <div class="form-step" id="step3">
+                        <div class="verification-info">
+                            <i class="fas fa-shield-check"></i>
+                            <h3>Verifikasi Email</h3>
+                            <p>Kami akan mengirimkan kode verifikasi ke email Anda untuk memastikan keamanan akun.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-wrapper full-width">
+                                <input type="checkbox" name="terms" id="terms" required>
+                                <span>Saya menyetujui <a href="#" class="link-primary">Syarat & Ketentuan</a> dan <a href="#" class="link-primary">Kebijakan Privasi</a></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-wrapper full-width">
+                                <input type="checkbox" name="newsletter" id="newsletter">
+                                <span>Saya ingin menerima tips lingkungan dan penawaran eksklusif via email</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="form-navigation">
+                        <button type="button" class="btn-prev" id="prevBtn" style="display: none;">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Kembali</span>
+                        </button>
+                        <button type="button" class="btn-next" id="nextBtn">
+                            <span>Lanjut</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button type="submit" class="btn-submit" id="submitBtn" style="display: none;">
+                            <span>Daftar Sekarang</span>
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="form-footer">
+                    <p><i class="fas fa-shield-alt"></i> Data Anda dilindungi dengan enkripsi SSL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../auth.js"></script>
+    <script src="../register.js"></script>
+</body>
+</html>

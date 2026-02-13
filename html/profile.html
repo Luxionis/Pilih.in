@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Pilah.in</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div>
+                        <span class="sidebar-logo-text">Pilah.in</span>
+                        <span class="sidebar-logo-sub">Dashboard</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Menu Utama</div>
+                    <a href="dashboard.html" class="nav-item" data-page="dashboard">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="events.html" class="nav-item" data-page="events">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Event</span>
+                        <span class="badge">5</span>
+                    </a>
+                    <a href="profile.html" class="nav-item active" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profil</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Komunitas</div>
+                    <a href="leaderboard.html" class="nav-item" data-page="leaderboard">
+                        <i class="fas fa-trophy"></i>
+                        <span>Leaderboard</span>
+                    </a>
+                    <a href="donations.html" class="nav-item" data-page="donations">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>Donasi</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Rewards</div>
+                    <a href="tukar-poin.html" class="nav-item" data-page="tukar-poin">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Tukar Poin</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-card" onclick="window.location.href='profile.html'">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name">Ahmad Fauzi</div>
+                        <div class="user-tier">
+                            <i class="fas fa-star"></i>
+                            <span>Level Gold</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="navbar-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">Profil</h1>
+                </div>
+                
+                <div class="navbar-right">
+                    <button class="nav-icon-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="nav-icon-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-count">3</span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Profile Content -->
+            <div class="dashboard-content">
+                <div class="profile-layout">
+                    <!-- Profile Sidebar -->
+                    <div class="profile-sidebar">
+                        <!-- Profile Card -->
+                        <div class="profile-card">
+                            <div class="profile-avatar">A</div>
+                            <h2 class="profile-name">Ahmad Fauzi</h2>
+                            <p class="profile-email">ahmad.fauzi@email.com</p>
+                            <div class="profile-badge">
+                                <i class="fas fa-crown"></i>
+                                Level Gold
+                            </div>
+                            <div class="profile-stats">
+                                <div class="profile-stat">
+                                    <div class="profile-stat-value">2,450</div>
+                                    <div class="profile-stat-label">Total Poin</div>
+                                </div>
+                                <div class="profile-stat">
+                                    <div class="profile-stat-value">127</div>
+                                    <div class="profile-stat-label">Aktivitas</div>
+                                </div>
+                                <div class="profile-stat">
+                                    <div class="profile-stat-value">12</div>
+                                    <div class="profile-stat-label">Event</div>
+                                </div>
+                                <div class="profile-stat">
+                                    <div class="profile-stat-value">8</div>
+                                    <div class="profile-stat-label">Badge</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- QR Code Card -->
+                        <div class="qr-card">
+                            <h3 class="qr-title">QR Code Rumah Tangga</h3>
+                            <div class="qr-code">
+                                <i class="fas fa-qrcode"></i>
+                            </div>
+                            <p class="qr-hint">Scan ini saat menyerahkan sampah ke petugas</p>
+                            <a href="#" class="qr-download">
+                                <i class="fas fa-download"></i>
+                                Download QR
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Content -->
+                    <div class="profile-content">
+                        <!-- Edit Profile Section -->
+                        <div class="profile-section">
+                            <div class="section-header">
+                                <h3 class="section-title">
+                                    <i class="fas fa-user-edit"></i>
+                                    Informasi Profil
+                                </h3>
+                                <button class="btn btn-outline" id="editProfileBtn">
+                                    <i class="fas fa-edit"></i>
+                                    Edit Profil
+                                </button>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-input" value="Ahmad Fauzi" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-input" value="ahmad.fauzi@email.com" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Nomor Telepon</label>
+                                    <input type="tel" class="form-input" value="0812 3456 7890" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Tanggal Lahir</label>
+                                    <input type="date" class="form-input" value="1995-06-15" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Provinsi</label>
+                                    <input type="text" class="form-input" value="DKI Jakarta" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Kota</label>
+                                    <input type="text" class="form-input" value="Jakarta Selatan" disabled>
+                                </div>
+                                <div class="form-group" style="grid-column: span 2;">
+                                    <label class="form-label">Alamat Lengkap</label>
+                                    <input type="text" class="form-input" value="Jl. Menteng Raya No. 123, Jakarta Selatan, 12930" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Activity History -->
+                        <div class="profile-section">
+                            <div class="section-header">
+                                <h3 class="section-title">
+                                    <i class="fas fa-history"></i>
+                                    Riwayat Aktivitas
+                                </h3>
+                                <a href="#" class="view-all">Lihat Semua</a>
+                            </div>
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Jenis Aktivitas</th>
+                                        <th>Detail</th>
+                                        <th>Poin</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>15 Jan 2025</td>
+                                        <td><span class="history-type positive"><i class="fas fa-recycle"></i> Pemilahan</span></td>
+                                        <td>5kg Sampah Plastik</td>
+                                        <td>+50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14 Jan 2025</td>
+                                        <td><span class="history-type neutral"><i class="fas fa-gift"></i> Penukaran</span></td>
+                                        <td>Voucher Rp 50.000</td>
+                                        <td>-100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12 Jan 2025</td>
+                                        <td><span class="history-type positive"><i class="fas fa-qrcode"></i> Scan QR</span></td>
+                                        <td>Penyerahan Sampah</td>
+                                        <td>+25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 Jan 2025</td>
+                                        <td><span class="history-type positive"><i Event</span></-hands-helping"></i>td>
+                                        <td>Bersih Pantai Ancol</ class="fas fatd>
+                                        <td>+100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>08 Jan 2025</td>
+                                        <td><span class="history-type positive"><i class="fas fa-recycle"></i> Pemilahan</span></td>
+                                        <td>3kg Sampah Kertas</td>
+                                        <td>+30</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Transaction History -->
+                        <div class="profile-section">
+                            <div class="section-header">
+                                <h3 class="section-title">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    Riwayat Transaksi
+                                </h3>
+                                <a href="#" class="view-all">Lihat Semua</a>
+                            </div>
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Jenis Transaksi</th>
+                                        <th>Status</th>
+                                        <th>Jumlah</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>14 Jan 2025</td>
+                                        <td><span class="history-type negative"><i class="fas fa-shopping-cart"></i> Penukaran Poin</span></td>
+                                        <td><span class="history-type positive">Berhasil</span></td>
+                                        <td>-100 Poin</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 Jan 2025</td>
+                                        <td><span class="history-type positive"><i class="fas fa-donate"></i> Donasi</span></td>
+                                        <td><span class="history-type positive">Berhasil</span></td>
+                                        <td>Rp 50.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>05 Jan 2025</td>
+                                        <td><span class="history-type negative"><i class="fas fa-shopping-cart"></i> Penukaran Poin</span></td>
+                                        <td><span class="history-type positive">Berhasil</span></td>
+                                        <td>-50 Poin</td>
+                                    </tr>
+                                    <tr>
+                                        <td>01 Jan 2025</td>
+                                        <td><span class="history-type positive"><i class="fas fa-gift"></i> Bonus Login</span></td>
+                                        <td><span class="history-type positive">Berhasil</span></td>
+                                        <td>+10 Poin</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Badges -->
+                        <div class="profile-section">
+                            <div class="section-header">
+                                <h3 class="section-title">
+                                    <i class="fas fa-medal"></i>
+                                    Badge & Achievements
+                                </h3>
+                            </div>
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                <div style="text-align: center; padding: 16px;">
+                                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                                        <i class="fas fa-trophy" style="color: #8B6914; font-size: 1.5rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.8rem; font-weight: 600;">Eco Warrior</span>
+                                </div>
+                                <div style="text-align: center; padding: 16px;">
+                                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #c0c0c0 0%, #a8a8a8 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                                        <i class="fas fa-recycle" style="color: #5a5a5a; font-size: 1.5rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.8rem; font-weight: 600;">Recycler</span>
+                                </div>
+                                <div style="text-align: center; padding: 16px;">
+                                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #cd7f32 0%, #b87333 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                                        <i class="fas fa-hands-helping" style="color: #5a3a1a; font-size: 1.5rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.8rem; font-weight: 600;">Volunteer</span>
+                                </div>
+                                <div style="text-align: center; padding: 16px;">
+                                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #1a3d2e 0%, #2d5a45 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                                        <i class="fas fa-calendar-check" style="color: white; font-size: 1.5rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.8rem; font-weight: 600;">5 Events</span>
+                                </div>
+                                <div style="text-align: center; padding: 16px;">
+                                    <div style="width: 60px; height: 60px; background: rgba(26, 61, 46, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+                                        <i class="fas fa-star" style="color: var(--secondary-amber); font-size: 1.5rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.8rem; font-weight: 600;">Gold Tier</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>
